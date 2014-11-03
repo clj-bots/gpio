@@ -9,44 +9,71 @@
   (direction [this])
   (set-direction! [this d] [this d state])
   (state [this])
-  (set-state! [this s]))
+  (set-state! [this s])
+  (edge [this])
+  (set-edge! [this e])
+  (wait-for [this] [this timeout]))
 
 (defn input?
-  "Test if the pin is current configured as an input pin."
+  "test if the pin is current configured as an input pin."
   [p]
   (= (direction p) :input))
 
 (defn input!
-  "Configure the pin to be an input."
+  "configure the pin to be an input."
   [p]
   (set-direction! p :input))
 
 (defn output?
-  "Test if the pin is current configured as an output pin."
+  "test if the pin is current configured as an output pin."
   [p]
   (= (direction p) :output))
 
 (defn output!
-  "Configure the pin to be an output."
+  "configure the pin to be an output."
   [p]
   (set-direction! p :output))
 
 (defn high?
-  "Test if the pin is currently :high."
+  "test if the pin is currently :high."
   [p]
   (= (state p) :high))
 
 (defn low?
-  "Test if the pin is currently :low."
+  "test if the pin is currently :low."
   [p]
   (= (state p) :low))
 
 (defn low!
-  "Set an output pin to :low."
+  "set an output pin to :low."
   [p]
   (set-state! p :low))
 
 (defn high!
-  "Set an output pin to :high."
+  "set an output pin to :high."
   [p]
   (set-state! p :high))
+
+(defn detect-rising? [p]
+  (= (edge p) :rising))
+
+(defn detect-falling? [p]
+  (= (edge p) :falling))
+
+(defn detect-both? [p]
+  (= (edge p) :both))
+
+(defn detect-none? [p]
+  (= (edge p) :none))
+
+(defn detect-rising! [p]
+  (set-edge! p :rising))
+
+(defn detect-falling! [p]
+  (set-edge! p :falling))
+
+(defn detect-both! [p]
+  (set-edge! p :both))
+
+(defn detect-none! [p]
+  (set-edge! p :none))
