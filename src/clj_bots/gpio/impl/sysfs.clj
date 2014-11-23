@@ -44,7 +44,7 @@
    v-file
    e-file
    al-file]
-  GPIOPin
+  gpio/GPIOPin
   (pin [this] gpio-pin)
 
   (direction [this]
