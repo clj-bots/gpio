@@ -54,6 +54,12 @@
   [p]
   (set-state! p :high))
 
+(defn toggle!
+  [pin]
+  (if (low? pin)
+    (high! pin)
+    (low! pin)))
+
 (defn detect-rising? [p]
   (= (edge p) :rising))
 
