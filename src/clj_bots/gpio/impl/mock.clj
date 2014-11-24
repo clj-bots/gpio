@@ -1,6 +1,8 @@
 (ns clj-bots.gpio.impl.mock
   (:require [clj-bots.gpio :as gpio]))
 
+(declare wait-for)
+
 (defrecord MockGPIOPin
   [gpio-pin
    direction-val
